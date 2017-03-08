@@ -10,4 +10,7 @@ import Foundation
 class ChecklitItem {
     var text = ""
     var checked = false
+    func toggleChecked() {
+        checked = !checked
+    }
 }
