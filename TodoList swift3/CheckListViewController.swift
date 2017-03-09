@@ -40,6 +40,11 @@ class CheckListViewController: UITableViewController {
         // Dispose of any resources that can be recreated.
     }
 
+    
+    @IBAction func addItem() {
+        
+    }
+    
     @IBAction func ShowAlert() {
         let alert = UIAlertController(title: "hello", message: "hello world", preferredStyle: .alert)
         let action = UIAlertAction(title: "OK", style: .default, handler: nil)
