@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CheckListViewController: UITableViewController {
+class CheckListViewController: UITableViewController, AddItemViewControllerDelegate {
     var items: [ChecklitItem]
 
     required init?(coder aDecoder: NSCoder) {
@@ -29,6 +29,21 @@ class CheckListViewController: UITableViewController {
         row2.text = "musice"
         items.append(row2)
         super.init(coder: aDecoder)
+    }
+    
+    func addItemViewControllerDidCancel(_ controller: AddItemViewController) {
+        dismiss(animated: true, completion: nil)
+    }
+    
+    func addItemViewController(_ controller: AddItemViewController, didFinishAdding item: ChecklitItem) {
+       print("delegate invoke FinishAdding")
+        let newRowIndex = items.count
+        items.append(item)
+        let indexPath = IndexPath(item: newRowIndex, section: 0)
+        let indexPaths = [indexPath]
+        tableView.insertRows(at: indexPaths, with: .automatic)
+        
+        dismiss(animated: true, completion: nil)
     }
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -74,6 +89,22 @@ class CheckListViewController: UITableViewController {
         tableView.deselectRow(at: indexPath, animated: true)
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "AddItem"{
+            let navigationController = segue.destination as! UINavigationController
+            let controller = navigationController.topViewController as! AddItemViewController
+            controller.delegate = self
+        } else if segue.identifier == "EditItem" {
+            let navigationController = segue.destination as! UINavigationController
+            let controller = navigationController.topViewController as! AddItemViewController
+            controller.title = "EditItem"
+            controller.delegate = self
+            if let indexPath = tableView.indexPath(for: sender as! UITableViewCell) {
+                controller.itemToEdit = items[indexPath.row]
+            }
+        }
+    }
+    
     func configText(for cell: UITableViewCell, with item: ChecklitItem) {
 //        let item = items[indexPath.row]
         let label = cell.viewWithTag(1000) as! UILabel
@@ -83,10 +114,13 @@ class CheckListViewController: UITableViewController {
     
     func configCheckmark(for cell: UITableViewCell, with item: ChecklitItem) {
 //        let item = items[indexPath.row]
+        let label = cell.viewWithTag(1001) as! UILabel
         if item.checked {
-            cell.accessoryType = .checkmark
+            label.text = "✓"
+//            cell.accessoryType = .checkmark
         } else {
-            cell.accessoryType = .none
+            label.text = "" 
+//            cell.accessoryType = .none
         }
     }
 
