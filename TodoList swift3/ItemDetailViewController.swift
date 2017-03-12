@@ -1,5 +1,5 @@
 //
-//  AddItemViewController.swift
+//  ItemDetailViewController.swift
 //  TodoList swift3
 //
 //  Created by Wenhui Zhao on 2017/3/9.
@@ -9,14 +9,14 @@
 import Foundation
 import UIKit
 
-protocol AddItemViewControllerDelegate: class {
-    func addItemViewControllerDidCancel(_ controller: AddItemViewController)
-    func addItemViewController(_ controller: AddItemViewController, didFinishAdding item: ChecklitItem)
-    func addItemViewController(_ controller: AddItemViewController, didFinishEditing item: ChecklitItem)
+protocol ItemDetailViewControllerDelegate: class {
+    func itemDetailViewControllerDidCancel(_ controller: ItemDetailViewController)
+    func itemDetailViewController(_ controller: ItemDetailViewController, didFinishAdding item: ChecklitItem)
+    func itemDetailViewController(_ controller: ItemDetailViewController, didFinishEditing item: ChecklitItem)
 }
 
-class AddItemViewController: UITableViewController, UITextFieldDelegate {
-    weak var delegate: AddItemViewControllerDelegate?
+class ItemDetailViewController: UITableViewController, UITextFieldDelegate {
+    weak var delegate: ItemDetailViewControllerDelegate?
     
     @IBOutlet weak var textField: UITextField!
     @IBOutlet weak var doneButton: UIBarButtonItem!
@@ -43,19 +43,19 @@ class AddItemViewController: UITableViewController, UITextFieldDelegate {
         
         if let item = itemToEdit {
             item.text = textField.text!
-            delegate?.addItemViewController(self, didFinishEditing: item)
+            delegate?.itemDetailViewController(self, didFinishEditing: item)
         } else {            
             let item = ChecklitItem()
             item.checked = false
             item.text = textField.text!
-            delegate?.addItemViewController(self, didFinishAdding: item)
+            delegate?.itemDetailViewController(self, didFinishAdding: item)
         }
         
 //        dismiss(animated: true, completion: nil)
     }
     
     @IBAction func cancel(_ sender: UIBarButtonItem) {
-        delegate?.addItemViewControllerDidCancel(self)
+        delegate?.itemDetailViewControllerDidCancel(self)
 //        dismiss(animated: true, completion: nil)
     }
     

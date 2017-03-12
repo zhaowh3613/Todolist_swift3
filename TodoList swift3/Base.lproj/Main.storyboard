@@ -66,7 +66,7 @@
         <!--Add Item-->
         <scene sceneID="oN8-Sx-viu">
             <objects>
-                <tableViewController id="yhk-5M-fIF" customClass="AddItemViewController" customModule="TodoList_swift3" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="yhk-5M-fIF" customClass="ItemDetailViewController" customModule="TodoList_swift3" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="6oL-MU-rOt">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
