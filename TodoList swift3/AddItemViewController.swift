@@ -12,6 +12,7 @@ import UIKit
 protocol AddItemViewControllerDelegate: class {
     func addItemViewControllerDidCancel(_ controller: AddItemViewController)
     func addItemViewController(_ controller: AddItemViewController, didFinishAdding item: ChecklitItem)
+    func addItemViewController(_ controller: AddItemViewController, didFinishEditing item: ChecklitItem)
 }
 
 class AddItemViewController: UITableViewController, UITextFieldDelegate {
@@ -39,10 +40,17 @@ class AddItemViewController: UITableViewController, UITextFieldDelegate {
     }
     
     @IBAction func done() {
-        let item = ChecklitItem()
-        item.checked = false
-        item.text = textField.text!
-        delegate?.addItemViewController(self, didFinishAdding: item)
+        
+        if let item = itemToEdit {
+            item.text = textField.text!
+            delegate?.addItemViewController(self, didFinishEditing: item)
+        } else {            
+            let item = ChecklitItem()
+            item.checked = false
+            item.text = textField.text!
+            delegate?.addItemViewController(self, didFinishAdding: item)
+        }
+        
 //        dismiss(animated: true, completion: nil)
     }
     

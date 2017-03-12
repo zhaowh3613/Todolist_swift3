@@ -18,15 +18,22 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="checkmark" indentationWidth="10" reuseIdentifier="ChecklistItem" id="KeD-PV-4vF">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="detailDisclosureButton" indentationWidth="10" reuseIdentifier="ChecklistItem" id="KeD-PV-4vF">
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KeD-PV-4vF" id="Zjj-X8-Cbv">
-                                    <rect key="frame" x="0.0" y="0.0" width="336" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="308" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
+                                        <label opaque="NO" tag="1001" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="✓" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qlJ-xn-VWM">
+                                            <rect key="frame" x="16" y="8" width="18" height="21"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
                                         <label opaque="NO" userInteractionEnabled="NO" tag="1000" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rTI-DQ-LhR">
-                                            <rect key="frame" x="15" y="8" width="352" height="21"/>
+                                            <rect key="frame" x="51" y="8" width="352" height="21"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
@@ -34,6 +41,9 @@
                                         </label>
                                     </subviews>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="NXl-rV-8Pq" kind="presentation" identifier="EditItem" trigger="accessoryAction" modalTransitionStyle="crossDissolve" id="vEx-qq-sIs"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -44,7 +54,7 @@
                     <navigationItem key="navigationItem" title="Checklists" id="E9O-eP-ypB">
                         <barButtonItem key="rightBarButtonItem" title="Item" systemItem="add" id="zrz-4F-bsF">
                             <connections>
-                                <segue destination="NXl-rV-8Pq" kind="presentation" modalTransitionStyle="flipHorizontal" id="NsL-Dq-aMV"/>
+                                <segue destination="NXl-rV-8Pq" kind="presentation" identifier="AddItem" modalTransitionStyle="crossDissolve" id="NsL-Dq-aMV"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -101,7 +111,7 @@
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="done" id="ULg-qz-Lue">
                             <connections>
-                                <action selector="done:" destination="yhk-5M-fIF" id="bMu-7f-5qc"/>
+                                <action selector="done" destination="yhk-5M-fIF" id="9nL-2d-Z8k"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -151,4 +161,7 @@
             <point key="canvasLocation" x="1556" y="37"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="NsL-Dq-aMV"/>
+    </inferredMetricsTieBreakers>
 </document>

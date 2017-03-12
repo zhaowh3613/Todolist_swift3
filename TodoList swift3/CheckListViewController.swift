@@ -10,6 +10,7 @@ import UIKit
 
 class CheckListViewController: UITableViewController, AddItemViewControllerDelegate {
     var items: [ChecklitItem]
+    var editItemIndexPath: IndexPath?
 
     required init?(coder aDecoder: NSCoder) {
         items = [ChecklitItem]()
@@ -26,7 +27,7 @@ class CheckListViewController: UITableViewController, AddItemViewControllerDeleg
         
         let row2 = ChecklitItem()
         row2.checked = false
-        row2.text = "musice"
+        row2.text = "music"
         items.append(row2)
         super.init(coder: aDecoder)
     }
@@ -43,6 +44,15 @@ class CheckListViewController: UITableViewController, AddItemViewControllerDeleg
         let indexPaths = [indexPath]
         tableView.insertRows(at: indexPaths, with: .automatic)
         
+        dismiss(animated: true, completion: nil)
+    }
+    
+    func addItemViewController(_ controller: AddItemViewController, didFinishEditing item: ChecklitItem) {
+        if let indexPath = editItemIndexPath{
+            if let cell = tableView.cellForRow(at: indexPath) {
+                configText(for: cell, with: item)
+            }
+        }
         dismiss(animated: true, completion: nil)
     }
     override func viewDidLoad() {
@@ -100,6 +110,7 @@ class CheckListViewController: UITableViewController, AddItemViewControllerDeleg
             controller.title = "EditItem"
             controller.delegate = self
             if let indexPath = tableView.indexPath(for: sender as! UITableViewCell) {
+                editItemIndexPath = indexPath
                 controller.itemToEdit = items[indexPath.row]
             }
         }
