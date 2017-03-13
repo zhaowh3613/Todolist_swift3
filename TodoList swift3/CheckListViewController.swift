@@ -11,6 +11,7 @@ import UIKit
 class CheckListViewController: UITableViewController, ItemDetailViewControllerDelegate {
     var items: [ChecklitItem]
     var editItemIndexPath: IndexPath?
+    let dataFileName = "Checklist.plist"
 
     required init?(coder aDecoder: NSCoder) {
         items = [ChecklitItem]()
@@ -30,6 +31,25 @@ class CheckListViewController: UITableViewController, ItemDetailViewControllerDe
         row2.text = "music"
         items.append(row2)
         super.init(coder: aDecoder)
+        print("document directory path \(self.documentDirectory())")
+        print("data file path \(self.dataFilePath())")
+    }
+    
+    func documentDirectory() -> URL {
+        let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
+        return paths[0]
+    }
+    
+    func dataFilePath() -> URL {
+        return documentDirectory().appendingPathComponent(dataFileName)
+    }
+    
+    func saveChecklistItems() {
+        let data = NSMutableData()
+        let archiver = NSKeyedArchiver(forWritingWith: data)
+        archiver.encode(items, forKey: "ChecklistItems")
+        archiver.finishEncoding()
+        data.write(to: dataFilePath(), atomically: true)
     }
     
     func itemDetailViewControllerDidCancel(_ controller: ItemDetailViewController) {
@@ -44,6 +64,7 @@ class CheckListViewController: UITableViewController, ItemDetailViewControllerDe
         let indexPaths = [indexPath]
         tableView.insertRows(at: indexPaths, with: .automatic)
         
+        saveChecklistItems()
         dismiss(animated: true, completion: nil)
     }
     
@@ -52,6 +73,7 @@ class CheckListViewController: UITableViewController, ItemDetailViewControllerDe
         if let indexPath = editItemIndexPath{
             if let cell = tableView.cellForRow(at: indexPath) {
                 configText(for: cell, with: item)
+                saveChecklistItems()
             }
         }
         dismiss(animated: true, completion: nil)
@@ -98,6 +120,7 @@ class CheckListViewController: UITableViewController, ItemDetailViewControllerDe
             configCheckmark(for: cell, with: item)
         }
         tableView.deselectRow(at: indexPath, animated: true)
+        saveChecklistItems()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

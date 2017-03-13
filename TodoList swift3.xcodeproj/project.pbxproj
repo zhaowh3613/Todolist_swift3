@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CF131D371E76D47A00916FBD /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF131D361E76D47A00916FBD /* Constants.swift */; };
 		CFD6CE871E6C507A0086A66F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD6CE861E6C507A0086A66F /* AppDelegate.swift */; };
 		CFD6CE891E6C507A0086A66F /* CheckListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD6CE881E6C507A0086A66F /* CheckListViewController.swift */; };
 		CFD6CE8C1E6C507A0086A66F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CFD6CE8A1E6C507A0086A66F /* Main.storyboard */; };
@@ -37,6 +38,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		CF131D361E76D47A00916FBD /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		CFD6CE831E6C507A0086A66F /* TodoList swift3.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "TodoList swift3.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CFD6CE861E6C507A0086A66F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CFD6CE881E6C507A0086A66F /* CheckListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = CheckListViewController.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
@@ -112,6 +114,7 @@
 				CFD6CE8D1E6C507A0086A66F /* TodoList_swift3.xcdatamodeld */,
 				CFD6CEB91E7047D20086A66F /* Checklistitem.swift */,
 				CFE822FD1E70DC3B00D4D9B3 /* ItemDetailViewController.swift */,
+				CF131D361E76D47A00916FBD /* Constants.swift */,
 			);
 			path = "TodoList swift3";
 			sourceTree = "<group>";
@@ -276,6 +279,7 @@
 				CFD6CE8F1E6C507A0086A66F /* TodoList_swift3.xcdatamodeld in Sources */,
 				CFD6CE871E6C507A0086A66F /* AppDelegate.swift in Sources */,
 				CFD6CEBA1E7047D20086A66F /* Checklistitem.swift in Sources */,
+				CF131D371E76D47A00916FBD /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
