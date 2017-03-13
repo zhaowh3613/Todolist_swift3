@@ -15,24 +15,28 @@ class CheckListViewController: UITableViewController, ItemDetailViewControllerDe
 
     required init?(coder aDecoder: NSCoder) {
         items = [ChecklitItem]()
-        
-        let row0 = ChecklitItem()
-        row0.checked = false
-        row0.text = "books"
-        items.append(row0)
-        
-        let row1 = ChecklitItem()
-        row1.checked = false
-        row1.text = "shopping"
-        items.append(row1)
-        
-        let row2 = ChecklitItem()
-        row2.checked = false
-        row2.text = "music"
-        items.append(row2)
         super.init(coder: aDecoder)
         print("document directory path \(self.documentDirectory())")
         print("data file path \(self.dataFilePath())")
+        loadCheckItems()
+        if items.count == 0 {
+            let row0 = ChecklitItem()
+            row0.checked = false
+            row0.text = "books"
+            items.append(row0)
+            
+            let row1 = ChecklitItem()
+            row1.checked = false
+            row1.text = "shopping"
+            items.append(row1)
+            
+            let row2 = ChecklitItem()
+            row2.checked = false
+            row2.text = "music"
+            items.append(row2)
+            
+        }
+
     }
     
     func documentDirectory() -> URL {
@@ -50,6 +54,15 @@ class CheckListViewController: UITableViewController, ItemDetailViewControllerDe
         archiver.encode(items, forKey: "ChecklistItems")
         archiver.finishEncoding()
         data.write(to: dataFilePath(), atomically: true)
+    }
+    
+    func loadCheckItems() {
+        let path = dataFilePath()
+        if let data = try? Data(contentsOf: path) {
+            let unarchiver = NSKeyedUnarchiver(forReadingWith: data)
+            items = unarchiver.decodeObject(forKey: "ChecklistItems") as! [ChecklitItem]
+            unarchiver.finishDecoding()
+        }
     }
     
     func itemDetailViewControllerDidCancel(_ controller: ItemDetailViewController) {
