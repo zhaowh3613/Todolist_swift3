@@ -9,9 +9,11 @@
 import UIKit
 
 class CheckListViewController: UITableViewController, ItemDetailViewControllerDelegate {
+    var checklist: Checklist!
     var items: [ChecklitItem]
     var editItemIndexPath: IndexPath?
     let dataFileName = "Checklist.plist"
+    
 
     required init?(coder aDecoder: NSCoder) {
         items = [ChecklitItem]()
@@ -93,6 +95,7 @@ class CheckListViewController: UITableViewController, ItemDetailViewControllerDe
     }
     override func viewDidLoad() {
         super.viewDidLoad()
+        title = checklist.name
         // Do any additional setup after loading the view, typically from a nib.
     }
 

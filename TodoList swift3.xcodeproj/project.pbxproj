@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		CF131D371E76D47A00916FBD /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF131D361E76D47A00916FBD /* Constants.swift */; };
+		CF131D391E76FCEF00916FBD /* AllListsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF131D381E76FCEF00916FBD /* AllListsViewController.swift */; };
+		CF131D3B1E76FD7F00916FBD /* Checklist.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF131D3A1E76FD7F00916FBD /* Checklist.swift */; };
 		CFD6CE871E6C507A0086A66F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD6CE861E6C507A0086A66F /* AppDelegate.swift */; };
 		CFD6CE891E6C507A0086A66F /* CheckListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD6CE881E6C507A0086A66F /* CheckListViewController.swift */; };
 		CFD6CE8C1E6C507A0086A66F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CFD6CE8A1E6C507A0086A66F /* Main.storyboard */; };
@@ -39,6 +41,8 @@
 
 /* Begin PBXFileReference section */
 		CF131D361E76D47A00916FBD /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		CF131D381E76FCEF00916FBD /* AllListsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AllListsViewController.swift; sourceTree = "<group>"; };
+		CF131D3A1E76FD7F00916FBD /* Checklist.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Checklist.swift; sourceTree = "<group>"; };
 		CFD6CE831E6C507A0086A66F /* TodoList swift3.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "TodoList swift3.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CFD6CE861E6C507A0086A66F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CFD6CE881E6C507A0086A66F /* CheckListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = CheckListViewController.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
@@ -82,6 +86,26 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		CF131D3D1E775A2C00916FBD /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				CF131D361E76D47A00916FBD /* Constants.swift */,
+				CF131D3A1E76FD7F00916FBD /* Checklist.swift */,
+				CFD6CEB91E7047D20086A66F /* Checklistitem.swift */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		CF131D3E1E775A6300916FBD /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				CFD6CE881E6C507A0086A66F /* CheckListViewController.swift */,
+				CFE822FD1E70DC3B00D4D9B3 /* ItemDetailViewController.swift */,
+				CF131D381E76FCEF00916FBD /* AllListsViewController.swift */,
+			);
+			name = ViewControllers;
+			sourceTree = "<group>";
+		};
 		CFD6CE7A1E6C50790086A66F = {
 			isa = PBXGroup;
 			children = (
@@ -106,15 +130,13 @@
 			isa = PBXGroup;
 			children = (
 				CFD6CE861E6C507A0086A66F /* AppDelegate.swift */,
-				CFD6CE881E6C507A0086A66F /* CheckListViewController.swift */,
-				CFD6CE8A1E6C507A0086A66F /* Main.storyboard */,
 				CFD6CE901E6C507A0086A66F /* Assets.xcassets */,
-				CFD6CE921E6C507A0086A66F /* LaunchScreen.storyboard */,
 				CFD6CE951E6C507A0086A66F /* Info.plist */,
+				CFD6CE921E6C507A0086A66F /* LaunchScreen.storyboard */,
+				CFD6CE8A1E6C507A0086A66F /* Main.storyboard */,
+				CF131D3D1E775A2C00916FBD /* Models */,
 				CFD6CE8D1E6C507A0086A66F /* TodoList_swift3.xcdatamodeld */,
-				CFD6CEB91E7047D20086A66F /* Checklistitem.swift */,
-				CFE822FD1E70DC3B00D4D9B3 /* ItemDetailViewController.swift */,
-				CF131D361E76D47A00916FBD /* Constants.swift */,
+				CF131D3E1E775A6300916FBD /* ViewControllers */,
 			);
 			path = "TodoList swift3";
 			sourceTree = "<group>";
@@ -275,8 +297,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				CFE822FE1E70DC3B00D4D9B3 /* ItemDetailViewController.swift in Sources */,
+				CF131D391E76FCEF00916FBD /* AllListsViewController.swift in Sources */,
 				CFD6CE891E6C507A0086A66F /* CheckListViewController.swift in Sources */,
 				CFD6CE8F1E6C507A0086A66F /* TodoList_swift3.xcdatamodeld in Sources */,
+				CF131D3B1E76FD7F00916FBD /* Checklist.swift in Sources */,
 				CFD6CE871E6C507A0086A66F /* AppDelegate.swift in Sources */,
 				CFD6CEBA1E7047D20086A66F /* Checklistitem.swift in Sources */,
 				CF131D371E76D47A00916FBD /* Constants.swift in Sources */,
