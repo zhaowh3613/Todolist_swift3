@@ -143,7 +143,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Agw-WW-z5a">
-                                                    <rect key="frame" x="0.0" y="0.0" width="360" height="45"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="360" height="44"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <nil key="textColor"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -248,7 +248,7 @@
         <!--Navigation Controller-->
         <scene sceneID="PqP-F5-tmM">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="f4I-0x-yKF" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="ListDetailNavigationController" automaticallyAdjustsScrollViewInsets="NO" id="f4I-0x-yKF" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Q7x-Gi-1ki">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -265,6 +265,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="NsL-Dq-aMV"/>
+        <segue reference="vEx-qq-sIs"/>
     </inferredMetricsTieBreakers>
 </document>

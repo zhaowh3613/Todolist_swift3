@@ -11,7 +11,7 @@ import UIKit
 class AllListsViewController: UITableViewController, ListDetailViewControllerDelegate {
 
     var lists: [Checklist]
-    
+    var editItemIndexPath: IndexPath?
     required init?(coder aDecoder: NSCoder) {
         lists = [Checklist]()
         super.init(coder: aDecoder)
@@ -118,6 +118,16 @@ class AllListsViewController: UITableViewController, ListDetailViewControllerDel
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
+    override func tableView(_ tableView: UITableView, accessoryButtonTappedForRowWith indexPath: IndexPath) {
+        let navigationController = storyboard!.instantiateViewController(withIdentifier: "ListDetailNavigationController") as! UINavigationController
+        let controller = navigationController.topViewController as! ListDetailViewController
+        controller.delegate = self
+        let checklist = lists[indexPath.row]
+        controller.checklistToEdit = checklist
+        editItemIndexPath = indexPath
+        present(navigationController, animated: true, completion: nil)
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         if segue.identifier == "ShowChecklist" {
@@ -128,6 +138,7 @@ class AllListsViewController: UITableViewController, ListDetailViewControllerDel
             let controller = navigationController.topViewController as! ListDetailViewController
             controller.delegate = self
             controller.checklistToEdit = nil
+            editItemIndexPath = nil
         }
         // Pass the selected object to the new view controller.
     }
@@ -146,6 +157,12 @@ class AllListsViewController: UITableViewController, ListDetailViewControllerDel
     }
 
     func listDetailViewController(_ controller: ListDetailViewController, didFinishEditing checklist: Checklist) {
+        if let indexPath = editItemIndexPath {
+            lists[indexPath.row].name = checklist.name
+            if let cell = tableView.cellForRow(at: indexPath) {
+                cell.textLabel!.text = checklist.name
+            }
+        }
         dismiss(animated: true, completion: nil)
     }
 }

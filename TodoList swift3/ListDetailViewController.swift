@@ -57,6 +57,10 @@ class ListDetailViewController: UITableViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        if let editItem = checklistToEdit {
+            title = "Edit check list"
+            textField.text = editItem.name
+        }
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -73,6 +77,8 @@ class ListDetailViewController: UITableViewController, UITextFieldDelegate {
     override func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
         return nil
     }
+    
+  
     // MARK: - Table view data source
 
 //    override func numberOfSections(in tableView: UITableView) -> Int {
